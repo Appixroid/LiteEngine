@@ -24,6 +24,9 @@ class Sprite : public Element
 		void setAnimationPlaying(bool playAnimation);
 		bool isAnimationPlaying();
 		
+		void enqueueFramePath(std::string& framePath);
+		void clearEnqueuedFramePaths();
+		
 	private:
 		std::vector<std::string> framePaths;
 		std::vector<Image> frames;

@@ -69,3 +69,13 @@ bool Sprite::isAnimationPlaying()
 {
 	return this->animationPlaying;
 }
+
+void Sprite::enqueueFramePath(std::string& framePath)
+{
+	this->framePaths.push_back(framePath);
+}
+
+void Sprite::clearEnqueuedFramePaths()
+{
+	this->framePaths.clear();
+}
