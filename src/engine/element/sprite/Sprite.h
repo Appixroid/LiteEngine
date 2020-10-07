@@ -10,8 +10,8 @@
 class Sprite : public Element
 {
 	public:
-		Sprite(std::vector<std::string> framePaths, unsigned int startFrame = 0, bool playAnimation = false);
-		Sprite(unsigned int startFrame = 0, bool playAnimation = false);
+		Sprite(std::vector<std::string> framePaths, unsigned int startFrame = 0, bool playAnimation = false, bool visible = true);
+		Sprite(unsigned int startFrame = 0, bool playAnimation = false, bool visible = true);
 		virtual ~Sprite();
 		
 		virtual void init(GameWindow* window, BasicState* state);
@@ -29,12 +29,17 @@ class Sprite : public Element
 		void enqueueFramePath(std::string& framePath);
 		void clearEnqueuedFramePaths();
 		
+		void setVisibility(bool visibility);
+		bool isVisible();
+		
 	private:
 		std::queue<std::string> framePaths;
 		std::vector<Image*> frames;
 		
 		unsigned int currentFrame;
 		bool animationPlaying;
+		
+		bool visible;
 };
 
 #endif

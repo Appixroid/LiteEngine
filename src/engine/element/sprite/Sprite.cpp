@@ -2,7 +2,7 @@
 
 #define MAX(left, right) (left > right ? left : right)
 
-Sprite::Sprite(std::vector<std::string> framePaths, unsigned int startFrame, bool playAnimation) : Sprite(startFrame, playAnimation)
+Sprite::Sprite(std::vector<std::string> framePaths, unsigned int startFrame, bool playAnimation, bool visible) : Sprite(startFrame, playAnimation, visible)
 {
 	for(std::string path : framePaths)
 	{
@@ -10,10 +10,11 @@ Sprite::Sprite(std::vector<std::string> framePaths, unsigned int startFrame, boo
 	}
 }
 
-Sprite::Sprite(unsigned int startFrame, bool playAnimation)
+Sprite::Sprite(unsigned int startFrame, bool playAnimation, bool visible)
 {
 	this->setAnimationFrame(startFrame);
 	this->setAnimationPlaying(playAnimation);
+	this->setVisibility(visible);
 }
 
 Sprite::~Sprite()
@@ -68,10 +69,13 @@ void Sprite::render(GameWindow* window, BasicState* state, Graphics* g)
 	UNUSED(window);
 	UNUSED(state);
 
-	this->attach(this->frames[this->currentFrame], &Surface::UPPER_LEFT_CORNER);
-	this->refresh();
-	
-	g->draw(this);
+	if(this->isVisible())
+	{
+		this->attach(this->frames[this->currentFrame], &Surface::UPPER_LEFT_CORNER);
+		this->refresh();
+		
+		g->draw(this);
+	}
 }
 
 void Sprite::setAnimationFrame(unsigned int frame)
@@ -105,4 +109,14 @@ void Sprite::clearEnqueuedFramePaths()
 	{
 		this->framePaths.pop();
 	}
+}
+
+void Sprite::setVisibility(bool visibility)
+{
+	this->visible = visibility;
+}
+
+bool Sprite::isVisible()
+{
+	return this->visible;
 }
