@@ -18,7 +18,6 @@ class Image : public Surface
 		virtual void resize(Size width, Size height, ColorDefinition colorDefinition = Color::BEST_COLOR_DEFINTION) override;
 		
 		virtual void setColorToAlpha(const Color& color);
-		virtual void setTransparency(Uint8 level);
 };
 
 #endif

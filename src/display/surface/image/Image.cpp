@@ -41,8 +41,3 @@ void Image::setColorToAlpha(const Color& color)
 {
 	SDL_SetColorKey(this->toSDL(), SDL_SRCCOLORKEY, color.toInt(this->getColorFormat()));
 }
-
-void Image::setTransparency(Uint8 level)
-{
-	SDL_SetAlpha(this->toSDL(), SDL_SRCALPHA, level);
-}

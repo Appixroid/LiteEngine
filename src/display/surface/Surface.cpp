@@ -39,6 +39,11 @@ void Surface::resize(Size width, Size height, Uint8 colorDefinition)
 	this->setSurface(SDL_CreateRGBSurface(SDL_HWSURFACE, width, height, colorDefinition, 0, 0, 0, 0));
 }
 
+void Surface::setTransparency(Uint8 level)
+{
+	SDL_SetAlpha(this->toSDL(), SDL_SRCALPHA, level);
+}
+
 void Surface::setSurface(SDL_Surface* surface)
 {
 	this->free();
