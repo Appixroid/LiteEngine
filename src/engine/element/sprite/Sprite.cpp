@@ -1,8 +1,13 @@
 #include "Sprite.h"
 
+#define MAX(left, right) (left > right ? left : right)
+
 Sprite::Sprite(std::vector<std::string> framePaths, unsigned int startFrame, bool playAnimation) : Sprite(startFrame, playAnimation)
 {
-	this->framePaths.swap(framePaths);
+	for(std::string path : framePaths)
+	{
+		this->enqueueFramePath(path);
+	}
 }
 
 Sprite::Sprite(unsigned int startFrame, bool playAnimation)
@@ -11,15 +16,34 @@ Sprite::Sprite(unsigned int startFrame, bool playAnimation)
 	this->setAnimationPlaying(playAnimation);
 }
 
+Sprite::~Sprite()
+{
+	for(Image* frame : this->frames)
+	{
+		delete frame;
+	}
+}
+
 void Sprite::init(GameWindow* window, BasicState* state)
 {
 	UNUSED(window);
 	UNUSED(state);
 	
-	for(std::string path : this->framePaths)
+	unsigned int maxWidth = 0;
+	unsigned int maxHeight = 0;
+	
+	while(!this->framePaths.empty())
 	{
-		this->frames.push_back(Image(path));
+		Image* frame = new Image(this->framePaths.front());
+		
+		maxWidth = MAX(maxWidth, frame->getWidth());
+		maxHeight = MAX(maxHeight, frame->getHeight());
+		
+		this->frames.push_back(frame);
+		this->framePaths.pop();
 	}
+	
+	this->resize(maxWidth, maxHeight);
 }
 
 void Sprite::destroy(GameWindow* window, BasicState* state)
@@ -44,7 +68,7 @@ void Sprite::render(GameWindow* window, BasicState* state, Graphics* g)
 	UNUSED(window);
 	UNUSED(state);
 
-	this->attach(&this->frames[this->currentFrame], &Surface::UPPER_LEFT_CORNER);
+	this->attach(this->frames[this->currentFrame], &Surface::UPPER_LEFT_CORNER);
 	this->refresh();
 	
 	g->draw(this);
@@ -72,10 +96,13 @@ bool Sprite::isAnimationPlaying()
 
 void Sprite::enqueueFramePath(std::string& framePath)
 {
-	this->framePaths.push_back(framePath);
+	this->framePaths.push(framePath);
 }
 
 void Sprite::clearEnqueuedFramePaths()
 {
-	this->framePaths.clear();
+	while(!this->framePaths.empty())
+	{
+		this->framePaths.pop();
+	}
 }

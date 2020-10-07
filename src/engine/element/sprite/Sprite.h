@@ -2,6 +2,7 @@
 #define __SPRITE_H__
 
 #include "../Element.h"
+#include <queue>
 #include <vector>
 #include <string>
 #include "../../../display/surface/image/Image.h"
@@ -11,6 +12,7 @@ class Sprite : public Element
 	public:
 		Sprite(std::vector<std::string> framePaths, unsigned int startFrame = 0, bool playAnimation = false);
 		Sprite(unsigned int startFrame = 0, bool playAnimation = false);
+		virtual ~Sprite();
 		
 		virtual void init(GameWindow* window, BasicState* state);
 		virtual void destroy(GameWindow* window, BasicState* state);
@@ -28,8 +30,8 @@ class Sprite : public Element
 		void clearEnqueuedFramePaths();
 		
 	private:
-		std::vector<std::string> framePaths;
-		std::vector<Image> frames;
+		std::queue<std::string> framePaths;
+		std::vector<Image*> frames;
 		
 		unsigned int currentFrame;
 		bool animationPlaying;
