@@ -14,7 +14,7 @@ class GameWindow : public Window
 {
 	public:
 		GameWindow(const std::string& title, Size width, Size height, WindowMode windowMode, const std::string& icon = "");
-		~GameWindow();
+		virtual ~GameWindow();
 
 		void show(const std::string& startingStateName);
 		

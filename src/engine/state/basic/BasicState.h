@@ -10,7 +10,7 @@ class Element;
 class BasicState : public GameState
 {
 	public:
-		~BasicState();
+		virtual ~BasicState();
 		
 		void addElement(Element* element);
 		void removeElement(Element* element);
