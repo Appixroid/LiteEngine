@@ -25,6 +25,8 @@ class Window
 		Size getHeight() const;
 		void setHeight(Size height);
 		
+		void resizeWindow(Size width, Size height);
+		
 		ColorDefinition getColorDefinition() const;
 		void setColorDefinition(ColorDefinition colorDefinition);
 		
@@ -57,6 +59,7 @@ class Window
 		bool isRunning;
 		
 		void loop();
+		void manageWindowEvent(const SDL_Event& event);
 };
 
 #endif

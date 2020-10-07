@@ -76,11 +76,7 @@ void GameWindow::stop()
 void GameWindow::catchEvent(const SDL_Event& event)
 {
 	switch(event.type)
-	{
-		case SDL_QUIT:
-            this->close();
-            break;
-            
+	{            
         case SDL_VIDEORESIZE:
         	this->currentState->onResize(event.resize.w, event.resize.h);
         	break;  

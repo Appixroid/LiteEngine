@@ -66,6 +66,13 @@ void Window::setHeight(Size height)
 {
 	this->height = height;
 }
+
+void Window::resizeWindow(Size width, Size height)
+{
+	this->setWidth(width);
+	this->setHeight(height);
+	this->screen.setSurface(SDL_SetVideoMode(this->width, this->height, this->colorDefinition, SDL_HWSURFACE | SDL_DOUBLEBUF | this->windowMode));
+}
 		
 Uint8 Window::getColorDefinition() const
 {
@@ -115,16 +122,22 @@ void Window::loop()
     {
     	if(SDL_PollEvent(&event))
         {
-        	if(event.type == SDL_VIDEORESIZE)
-        	{
-        		this->setWidth(event.resize.w);
-        		this->setHeight(event.resize.h);
-       			this->screen.setSurface(SDL_SetVideoMode(this->width, this->height, this->colorDefinition, SDL_HWSURFACE | SDL_DOUBLEBUF | this->windowMode));
-        	}
-        	
+        	this->manageWindowEvent(event);
         	this->catchEvent(event);
         }
         
     	this->update();
+    }
+}
+
+void Window::manageWindowEvent(const SDL_Event& event)
+{
+	if(event.type == SDL_VIDEORESIZE)
+	{
+		this->resizeWindow(event.resize.w, event.resize.h);
+	}
+	else if(event.type == SDL_QUIT)
+	{
+    	this->close();
     }
 }
