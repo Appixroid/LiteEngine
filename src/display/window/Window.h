@@ -53,11 +53,14 @@ class Window
 		virtual void catchEvent(const SDL_Event& event) = 0;
 		
 	private:
+		const std::string title;
+	
 		Size width;
 		Size height;
 		
 		ColorDefinition colorDefinition;
 		WindowMode windowMode;
+		const std::string icon;
 		
 		Surface screen;
 		

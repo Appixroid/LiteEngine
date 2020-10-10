@@ -1,32 +1,40 @@
 #include "Window.h"
 #include <stdexcept>
 #include "../Color.h"
-#include <chrono>
-#include <iostream>
 
 #define MAX(left, right) (left > right ? left : right)
 #define MILLIS_PER_SECONDS 1000
 
 Window::Window(const std::string& title, Size width, Size height, WindowMode windowMode, const std::string& icon, unsigned int targetFPS)
-: width(width), height(height), colorDefinition(Color::BEST_COLOR_DEFINTION), windowMode(windowMode)
+: title(title), width(width), height(height), colorDefinition(Color::BEST_COLOR_DEFINTION), windowMode(windowMode), icon(icon)
 {
-	this->setTitle(title);
-	this->setIcon(icon);
 	this->setTargetFPS(targetFPS);
 }
 
 void Window::show()
 {
-	this->screen.setSurface(SDL_SetVideoMode(this->width, this->height, this->colorDefinition, SDL_HWSURFACE | SDL_DOUBLEBUF | this->windowMode));
+	if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) == 0)
+    { 
+    	this->setTitle(this->title);
+    	this->setIcon(this->icon);
+    	
+		this->screen.setSurface(SDL_SetVideoMode(this->width, this->height, this->colorDefinition, SDL_HWSURFACE | SDL_DOUBLEBUF | this->windowMode));
+		
+		if(this->screen.isNull())
+		{
+			throw std::runtime_error(SDL_GetError());
+		}
+		
+		this->init();
+		this->isRunning = true;
+		this->loop();
 	
-	if(this->screen.isNull())
-	{
-		throw std::runtime_error(SDL_GetError());
-	}
-	
-	this->init();
-	this->isRunning = true;
-	this->loop();
+    	SDL_Quit();
+    }
+    else
+    {
+    	throw std::runtime_error(SDL_GetError());
+    }
 }
 
 void Window::close()
