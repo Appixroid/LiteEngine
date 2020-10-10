@@ -21,7 +21,7 @@ class GameState
 		virtual void init(GameWindow* window) = 0;
 		virtual void destroy(GameWindow* window) = 0;
 		
-		virtual void update(GameWindow* window) = 0;
+		virtual void update(GameWindow* window, unsigned int delta) = 0;
 		virtual void render(GameWindow* window, Graphics* g) = 0;
 		
 		virtual void enter(GameWindow* window) = 0;
@@ -44,7 +44,7 @@ class EmptyState : public GameState
 		void init(GameWindow* window) override { UNUSED(window); };
 		void destroy(GameWindow* window) override { UNUSED(window); };
 		
-		void update(GameWindow* window) override { UNUSED(window); };
+		void update(GameWindow* window, unsigned int delta) override { UNUSED(window); UNUSED(delta); };
 		void render(GameWindow* window, Graphics* g) override { UNUSED(window); UNUSED(g); };
 		
 		void enter(GameWindow* window) override { UNUSED(window); };

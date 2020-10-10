@@ -4,14 +4,15 @@
 #include <chrono>
 #include <iostream>
 
-#define MICRO_UNIX_TIME (std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count())
-#define MICRO_PER_SECONDS 1000000
+#define MAX(left, right) (left > right ? left : right)
+#define MILLIS_PER_SECONDS 1000
 
-Window::Window(const std::string& title, Size width, Size height, WindowMode windowMode, const std::string& icon)
+Window::Window(const std::string& title, Size width, Size height, WindowMode windowMode, const std::string& icon, unsigned int targetFPS)
 : width(width), height(height), colorDefinition(Color::BEST_COLOR_DEFINTION), windowMode(windowMode)
 {
 	this->setTitle(title);
 	this->setIcon(icon);
+	this->setTargetFPS(targetFPS);
 }
 
 void Window::show()
@@ -94,6 +95,11 @@ void Window::setWindowMode(WindowMode windowMode)
 	this->windowMode = windowMode;
 }
 
+void Window::setTargetFPS(unsigned int fps)
+{
+	this->ticksPerFrame = MILLIS_PER_SECONDS / fps;
+}
+
 void Window::setKeyRepeatDelay(unsigned short delay)
 {
 	SDL_EnableKeyRepeat(delay, delay);
@@ -109,6 +115,11 @@ void Window::moveCursor(unsigned int x, unsigned int y)
 	SDL_WarpMouse(x, y);
 }
 
+void Window::wait(unsigned int ms)
+{
+	SDL_Delay(ms);
+}
+
 Surface* Window::getScreen()
 {
 	return &(this->screen);
@@ -116,6 +127,7 @@ Surface* Window::getScreen()
 
 void Window::loop()
 {
+	Ticks lastTicks = 0;
     SDL_Event event;
  	
     while(this->isRunning)
@@ -126,7 +138,21 @@ void Window::loop()
         	this->catchEvent(event);
         }
         
-    	this->update();
+    	Ticks newTicks = SDL_GetTicks();
+		Ticks ticksPassed = newTicks - lastTicks;
+		
+		if(ticksPassed > this->ticksPerFrame)
+		{
+			unsigned int delta = ticksPassed / this->ticksPerFrame;
+			
+    		this->update(delta);
+    		lastTicks = newTicks;
+    	}
+    	else
+    	{
+    		this->wait(this->ticksPerFrame - ticksPassed);
+    	}
+    	
     }
 }
 

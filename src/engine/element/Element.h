@@ -24,7 +24,7 @@ class Element : public Surface
 		virtual void init(GameWindow* window, BasicState* state) = 0;
 		virtual void destroy(GameWindow* window, BasicState* state) = 0;
 		
-		virtual void update(GameWindow* window, BasicState* state) = 0;
+		virtual void update(GameWindow* window, BasicState* state, unsigned int delta) = 0;
 		virtual void render(GameWindow* window, BasicState* state, Graphics* g) = 0;
 		
 		virtual void onKeyPressed(BasicState* state, KeyCode key, KeyModifier modifiers) = 0;

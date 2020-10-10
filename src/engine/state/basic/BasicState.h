@@ -19,7 +19,7 @@ class BasicState : public GameState
 		virtual void init(GameWindow* window) override;
 		virtual void destroy(GameWindow* window) override;
 		
-		virtual void update(GameWindow* window) override;
+		virtual void update(GameWindow* window, unsigned int delta) override;
 		virtual void render(GameWindow* window, Graphics* g) override;
 		
 		virtual void onKeyPressed(KeyCode key, KeyModifier modifiers) override;

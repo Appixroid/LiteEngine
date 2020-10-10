@@ -27,7 +27,7 @@ class GameWindow : public Window
 		
 	protected:		
 		virtual void init() override;
-		virtual void update() override;
+		virtual void update(unsigned int delta) override;
 		virtual void stop() override;
 		
 		virtual void catchEvent(const SDL_Event& event) override;

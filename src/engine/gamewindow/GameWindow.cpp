@@ -54,9 +54,9 @@ void GameWindow::init()
 	}
 }
 
-void GameWindow::update()
+void GameWindow::update(unsigned int delta)
 {
-	this->currentState->update(this);
+	this->currentState->update(this, delta);
 	
 	Graphics g;
 	this->currentState->render(this, &g);

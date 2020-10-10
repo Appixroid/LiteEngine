@@ -25,7 +25,7 @@ void ImageElement::render(GameWindow* window, BasicState* state, Graphics* g)
 void ImageElement::init(GameWindow* window, BasicState* state) { UNUSED(window); UNUSED(state); }
 void ImageElement::destroy(GameWindow* window, BasicState* state) { UNUSED(window); UNUSED(state); }
 
-void ImageElement::update(GameWindow* window, BasicState* state) { UNUSED(window); UNUSED(state); }
+void ImageElement::update(GameWindow* window, BasicState* state, unsigned int delta) { UNUSED(window); UNUSED(state); UNUSED(delta); }
 
 void ImageElement::onKeyPressed(BasicState* state, KeyCode key, KeyModifier modifiers) { UNUSED(state); UNUSED(key); UNUSED(modifiers); }
 void ImageElement::onKeyReleased(BasicState* state, KeyCode key, KeyModifier modifiers) { UNUSED(state); UNUSED(key); UNUSED(modifiers); }

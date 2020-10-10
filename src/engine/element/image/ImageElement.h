@@ -18,7 +18,7 @@ class ImageElement : public Element
 		virtual void init(GameWindow* window, BasicState* state) override;
 		virtual void destroy(GameWindow* window, BasicState* state) override;
 		
-		virtual void update(GameWindow* window, BasicState* state) override;
+		virtual void update(GameWindow* window, BasicState* state, unsigned int delta) override;
 		virtual void render(GameWindow* window, BasicState* state, Graphics* g) override;
 		
 		virtual void onKeyPressed(BasicState* state, KeyCode key, KeyModifier modifiers) override;

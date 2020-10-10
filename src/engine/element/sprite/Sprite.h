@@ -17,7 +17,7 @@ class Sprite : public Element
 		virtual void init(GameWindow* window, BasicState* state);
 		virtual void destroy(GameWindow* window, BasicState* state);
 		
-		virtual void update(GameWindow* window, BasicState* state);
+		virtual void update(GameWindow* window, BasicState* state, unsigned int delta);
 		virtual void render(GameWindow* window, BasicState* state, Graphics* g);
 		
 		void setAnimationFrame(unsigned int frame);

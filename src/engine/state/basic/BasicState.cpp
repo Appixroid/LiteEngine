@@ -37,11 +37,11 @@ void BasicState::destroy(GameWindow* window)
 	}
 }
 
-void BasicState::update(GameWindow* window)
+void BasicState::update(GameWindow* window, unsigned int delta)
 {
 	for(Element* element : this->elements)
 	{
-		element->update(window, this);
+		element->update(window, this, delta);
 	}
 }
 

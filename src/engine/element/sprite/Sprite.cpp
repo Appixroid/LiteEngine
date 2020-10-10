@@ -53,10 +53,11 @@ void Sprite::destroy(GameWindow* window, BasicState* state)
 	UNUSED(state);
 }
 
-void Sprite::update(GameWindow* window, BasicState* state)
+void Sprite::update(GameWindow* window, BasicState* state, unsigned int delta)
 {
 	UNUSED(window);
 	UNUSED(state);
+	UNUSED(delta);
 	
 	if(this->isAnimationPlaying())
 	{
