@@ -22,7 +22,7 @@ class Surface
 		virtual void fill(const Color& color);
 		virtual void resize(Size width, Size height, ColorDefinition colorDefinition = Color::BEST_COLOR_DEFINTION);
 		
-		virtual void setTransparency(Uint8 level);
+		virtual void setOpacity(Uint8 level);
 		
 		virtual void setColorToAlpha(const Color& color);
 
