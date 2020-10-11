@@ -36,8 +36,3 @@ void Image::resize(unsigned int width, unsigned int height, Uint8 colorDefinitio
 	UNUSED(colorDefinition);
 	throw std::logic_error("Cannot resize image");
 }
-
-void Image::setColorToAlpha(const Color& color)
-{
-	SDL_SetColorKey(this->toSDL(), SDL_SRCCOLORKEY, color.toInt(this->getColorFormat()));
-}

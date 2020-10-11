@@ -23,6 +23,8 @@ class Surface
 		virtual void resize(Size width, Size height, ColorDefinition colorDefinition = Color::BEST_COLOR_DEFINTION);
 		
 		virtual void setTransparency(Uint8 level);
+		
+		virtual void setColorToAlpha(const Color& color);
 
 		void setSurface(SDL_Surface* surface);
 		SDL_Surface* toSDL() const;

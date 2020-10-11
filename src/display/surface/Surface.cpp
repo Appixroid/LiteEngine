@@ -44,6 +44,11 @@ void Surface::setTransparency(Uint8 level)
 	SDL_SetAlpha(this->toSDL(), SDL_SRCALPHA, level);
 }
 
+void Surface::setColorToAlpha(const Color& color)
+{
+	SDL_SetColorKey(this->toSDL(), SDL_SRCCOLORKEY, color.toInt(this->getColorFormat()));
+}
+
 void Surface::setSurface(SDL_Surface* surface)
 {
 	this->free();
