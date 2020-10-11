@@ -78,27 +78,27 @@ void GameWindow::catchEvent(const SDL_Event& event)
 	switch(event.type)
 	{            
         case SDL_VIDEORESIZE:
-        	this->currentState->onResize(event.resize.w, event.resize.h);
+        	this->currentState->onResize(this, event.resize.w, event.resize.h);
         	break;  
         
 		case SDL_KEYDOWN:
-			this->currentState->onKeyPressed(event.key.keysym.sym, event.key.keysym.mod);
+			this->currentState->onKeyPressed(this, event.key.keysym.sym, event.key.keysym.mod);
 			break;
 			
 		case SDL_KEYUP:
-			this->currentState->onKeyReleased(event.key.keysym.sym, event.key.keysym.mod);
+			this->currentState->onKeyReleased(this, event.key.keysym.sym, event.key.keysym.mod);
 			break;
 			
 		case SDL_MOUSEBUTTONDOWN:
-			this->currentState->onMousePressed(event.button.button, event.button.x, event.button.y);
+			this->currentState->onMousePressed(this, event.button.button, event.button.x, event.button.y);
 			break;
 			
 		case SDL_MOUSEBUTTONUP:
-			this->currentState->onMouseReleased(event.button.button, event.button.x, event.button.y);
+			this->currentState->onMouseReleased(this, event.button.button, event.button.x, event.button.y);
 			break;
 			
 		case SDL_MOUSEMOTION:
-			this->currentState->onMouseMoved(event.motion.x, event.motion.y, event.motion.xrel, event.motion.yrel);
+			this->currentState->onMouseMoved(this, event.motion.x, event.motion.y, event.motion.xrel, event.motion.yrel);
 			break;
 	}
 }

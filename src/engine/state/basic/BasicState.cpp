@@ -53,43 +53,43 @@ void BasicState::render(GameWindow* window, Graphics* g)
 	}
 }
 
-void BasicState::onKeyPressed(KeyCode key, KeyModifier modifiers)
+void BasicState::onKeyPressed(GameWindow* window, KeyCode key, KeyModifier modifiers)
 {
 	for(Element* element : this->elements)
 	{
-		element->onKeyPressed(this, key, modifiers);
+		element->onKeyPressed(window, this, key, modifiers);
 	}
 }
 
-void BasicState::onKeyReleased(KeyCode key, KeyModifier modifiers)
+void BasicState::onKeyReleased(GameWindow* window, KeyCode key, KeyModifier modifiers)
 {
 	for(Element* element : this->elements)
 	{
-		element->onKeyReleased(this, key, modifiers);
+		element->onKeyReleased(window, this, key, modifiers);
 	}
 }
 
-void BasicState::onMousePressed(ButtonCode button, unsigned int x, unsigned int y)
+void BasicState::onMousePressed(GameWindow* window, ButtonCode button, unsigned int x, unsigned int y)
 {
 	for(Element* element : this->elements)
 	{
-		element->onMousePressed(this, button, x, y);
+		element->onMousePressed(window, this, button, x, y);
 	}
 }
 
-void BasicState::onMouseReleased(ButtonCode button, unsigned int x, unsigned int y)
+void BasicState::onMouseReleased(GameWindow* window, ButtonCode button, unsigned int x, unsigned int y)
 {
 	for(Element* element : this->elements)
 	{
-		element->onMouseReleased(this, button, x, y);
+		element->onMouseReleased(window, this, button, x, y);
 	}
 }
 
-void BasicState::onMouseMoved(unsigned int x, unsigned int y, signed int motionX, signed int motionY)
+void BasicState::onMouseMoved(GameWindow* window, unsigned int x, unsigned int y, signed int motionX, signed int motionY)
 {
 	for(Element* element : this->elements)
 	{
-		element->onMouseMoved(this, x, y, motionX, motionY);
+		element->onMouseMoved(window, this, x, y, motionX, motionY);
 	}
 }
 

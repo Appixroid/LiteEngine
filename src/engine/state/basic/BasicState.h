@@ -22,12 +22,12 @@ class BasicState : public GameState
 		virtual void update(GameWindow* window, unsigned int delta) override;
 		virtual void render(GameWindow* window, Graphics* g) override;
 		
-		virtual void onKeyPressed(KeyCode key, KeyModifier modifiers) override;
-		virtual void onKeyReleased(KeyCode key, KeyModifier modifiers) override;
+		virtual void onKeyPressed(GameWindow* window, KeyCode key, KeyModifier modifiers) override;
+		virtual void onKeyReleased(GameWindow* window, KeyCode key, KeyModifier modifiers) override;
 		
-		virtual void onMousePressed(ButtonCode button, unsigned int x, unsigned int y) override;
-		virtual void onMouseReleased(ButtonCode button, unsigned int x, unsigned int y) override;
-		virtual void onMouseMoved(unsigned int x, unsigned int y, signed int motionX, signed int motionY) override;
+		virtual void onMousePressed(GameWindow* window, ButtonCode button, unsigned int x, unsigned int y) override;
+		virtual void onMouseReleased(GameWindow* window, ButtonCode button, unsigned int x, unsigned int y) override;
+		virtual void onMouseMoved(GameWindow* window, unsigned int x, unsigned int y, signed int motionX, signed int motionY) override;
 		
 	private:
 		std::vector<Element*> elements;

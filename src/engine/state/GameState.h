@@ -27,14 +27,14 @@ class GameState
 		virtual void enter(GameWindow* window) = 0;
 		virtual void leave(GameWindow* window) = 0;
 		
-		virtual void onResize(Size newWidth, Size newHeight) = 0;
+		virtual void onResize(GameWindow* window, Size newWidth, Size newHeight) = 0;
 		
-		virtual void onKeyPressed(KeyCode key, KeyModifier modifiers) = 0;
-		virtual void onKeyReleased(KeyCode key, KeyModifier modifiers) = 0;
+		virtual void onKeyPressed(GameWindow* window, KeyCode key, KeyModifier modifiers) = 0;
+		virtual void onKeyReleased(GameWindow* window, KeyCode key, KeyModifier modifiers) = 0;
 		
-		virtual void onMousePressed(ButtonCode button, unsigned int x, unsigned int y) = 0;
-		virtual void onMouseReleased(ButtonCode button, unsigned int x, unsigned int y) = 0;
-		virtual void onMouseMoved(unsigned int x, unsigned int y, signed int motionX, signed int motionY) = 0;
+		virtual void onMousePressed(GameWindow* window, ButtonCode button, unsigned int x, unsigned int y) = 0;
+		virtual void onMouseReleased(GameWindow* window, ButtonCode button, unsigned int x, unsigned int y) = 0;
+		virtual void onMouseMoved(GameWindow* window, unsigned int x, unsigned int y, signed int motionX, signed int motionY) = 0;
 };
 
 
@@ -50,13 +50,13 @@ class EmptyState : public GameState
 		void enter(GameWindow* window) override { UNUSED(window); };
 		void leave(GameWindow* window) override { UNUSED(window); };
 		
-		void onResize(Size newWidth, Size newHeight) override { UNUSED(newWidth); UNUSED(newHeight); }
+		void onResize(GameWindow* window, Size newWidth, Size newHeight) override { UNUSED(window); UNUSED(newWidth); UNUSED(newHeight); }
 		
-		void onKeyPressed(KeyCode key, KeyModifier modifiers) override { UNUSED(key); UNUSED(modifiers); };
-		void onKeyReleased(KeyCode key, KeyModifier modifiers) override { UNUSED(key); UNUSED(modifiers); };
+		void onKeyPressed(GameWindow* window, KeyCode key, KeyModifier modifiers) override { UNUSED(window); UNUSED(key); UNUSED(modifiers); };
+		void onKeyReleased(GameWindow* window, KeyCode key, KeyModifier modifiers) override { UNUSED(window); UNUSED(key); UNUSED(modifiers); };
 		
-		void onMousePressed(ButtonCode button, unsigned int x, unsigned int y) override { UNUSED(button); UNUSED(x); UNUSED(y); };
-		void onMouseReleased(ButtonCode button, unsigned int x, unsigned int y) override { UNUSED(button); UNUSED(x); UNUSED(y); };
-		void onMouseMoved(unsigned int x, unsigned int y, signed int motionX, signed int motionY) override { UNUSED(x); UNUSED(y); UNUSED(motionX); UNUSED(motionY); };
+		void onMousePressed(GameWindow* window, ButtonCode button, unsigned int x, unsigned int y) override { UNUSED(window); UNUSED(button); UNUSED(x); UNUSED(y); };
+		void onMouseReleased(GameWindow* window, ButtonCode button, unsigned int x, unsigned int y) override { UNUSED(window); UNUSED(button); UNUSED(x); UNUSED(y); };
+		void onMouseMoved(GameWindow* window, unsigned int x, unsigned int y, signed int motionX, signed int motionY) override { UNUSED(window); UNUSED(x); UNUSED(y); UNUSED(motionX); UNUSED(motionY); };
 };
 #endif

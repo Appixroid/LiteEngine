@@ -21,14 +21,15 @@ class ImageElement : public Element
 		virtual void update(GameWindow* window, BasicState* state, unsigned int delta) override;
 		virtual void render(GameWindow* window, BasicState* state, Graphics* g) override;
 		
-		virtual void onKeyPressed(BasicState* state, KeyCode key, KeyModifier modifiers) override;
-		virtual void onKeyReleased(BasicState* state, KeyCode key, KeyModifier modifiers) override;
+		virtual void onKeyPressed(GameWindow* window, BasicState* state, KeyCode key, KeyModifier modifiers) override;
+		virtual void onKeyReleased(GameWindow* window, BasicState* state, KeyCode key, KeyModifier modifiers) override;
 		
-		virtual void onMousePressed(BasicState* state, ButtonCode button, unsigned int x, unsigned int y) override;
-		virtual void onMouseReleased(BasicState* state, ButtonCode button, unsigned int x, unsigned int y) override;
-		virtual void onMouseMoved(BasicState* state, unsigned int x, unsigned int y, signed int motionX, signed int motionY) override;
+		virtual void onMousePressed(GameWindow* window, BasicState* state, ButtonCode button, unsigned int x, unsigned int y) override;
+		virtual void onMouseReleased(GameWindow* window, BasicState* state, ButtonCode button, unsigned int x, unsigned int y) override;
+		virtual void onMouseMoved(GameWindow* window, BasicState* state, unsigned int x, unsigned int y, signed int motionX, signed int motionY) override;
 		
 	private:
+		const std::string path;
 		Image image;
 };
 

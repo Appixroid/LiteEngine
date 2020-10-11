@@ -27,12 +27,12 @@ class Element : public Surface
 		virtual void update(GameWindow* window, BasicState* state, unsigned int delta) = 0;
 		virtual void render(GameWindow* window, BasicState* state, Graphics* g) = 0;
 		
-		virtual void onKeyPressed(BasicState* state, KeyCode key, KeyModifier modifiers) = 0;
-		virtual void onKeyReleased(BasicState* state, KeyCode key, KeyModifier modifiers) = 0;
+		virtual void onKeyPressed(GameWindow* window, BasicState* state, KeyCode key, KeyModifier modifiers) = 0;
+		virtual void onKeyReleased(GameWindow* window, BasicState* state, KeyCode key, KeyModifier modifiers) = 0;
 		
-		virtual void onMousePressed(BasicState* state, ButtonCode button, unsigned int x, unsigned int y) = 0;
-		virtual void onMouseReleased(BasicState* state, ButtonCode button, unsigned int x, unsigned int y) = 0;
-		virtual void onMouseMoved(BasicState* state, unsigned int x, unsigned int y, signed int motionX, signed int motionY) = 0;
+		virtual void onMousePressed(GameWindow* window, BasicState* state, ButtonCode button, unsigned int x, unsigned int y) = 0;
+		virtual void onMouseReleased(GameWindow* window, BasicState* state, ButtonCode button, unsigned int x, unsigned int y) = 0;
+		virtual void onMouseMoved(GameWindow* window, BasicState* state, unsigned int x, unsigned int y, signed int motionX, signed int motionY) = 0;
 		
 	private:
 		Vector position;
