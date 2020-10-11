@@ -4,10 +4,12 @@
 #include "../GameState.h"
 #include <vector>
 #include "../../graphics/Graphics.h"
+#include "../../events/listenable/KeyboardListenable.h"
+#include "../../events/listenable/MouseListenable.h"
 
 class Element;
 
-class BasicState : public GameState
+class BasicState : public GameState, public KeyboardListenable, public MouseListenable
 {
 	public:
 		virtual ~BasicState();

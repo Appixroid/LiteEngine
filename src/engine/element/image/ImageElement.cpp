@@ -26,13 +26,7 @@ void ImageElement::init(GameWindow* window, BasicState* state)
 	
 	this->loadImage(this->path);
 }
+
 void ImageElement::destroy(GameWindow* window, BasicState* state) { UNUSED(window); UNUSED(state); }
 
 void ImageElement::update(GameWindow* window, BasicState* state, unsigned int delta) { UNUSED(window); UNUSED(state); UNUSED(delta); }
-
-void ImageElement::onKeyPressed(GameWindow* window, BasicState* state, KeyCode key, KeyModifier modifiers) { UNUSED(window); UNUSED(state); UNUSED(key); UNUSED(modifiers); }
-void ImageElement::onKeyReleased(GameWindow* window, BasicState* state, KeyCode key, KeyModifier modifiers) { UNUSED(window); UNUSED(state); UNUSED(key); UNUSED(modifiers); }
-
-void ImageElement::onMousePressed(GameWindow* window, BasicState* state, ButtonCode button, unsigned int x, unsigned int y) { UNUSED(window); UNUSED(state); UNUSED(button); UNUSED(x); UNUSED(y); }
-void ImageElement::onMouseReleased(GameWindow* window, BasicState* state, ButtonCode button, unsigned int x, unsigned int y) { UNUSED(window); UNUSED(state); UNUSED(button); UNUSED(x); UNUSED(y); }
-void ImageElement::onMouseMoved(GameWindow* window, BasicState* state, unsigned int x, unsigned int y, signed int motionX, signed int motionY) { UNUSED(window); UNUSED(state); UNUSED(x); UNUSED(y); UNUSED(motionX); UNUSED(motionY); }

@@ -55,41 +55,26 @@ void BasicState::render(GameWindow* window, Graphics* g)
 
 void BasicState::onKeyPressed(GameWindow* window, KeyCode key, KeyModifier modifiers)
 {
-	for(Element* element : this->elements)
-	{
-		element->onKeyPressed(window, this, key, modifiers);
-	}
+	this->keyPressedNotifyAll(window, this, key, modifiers);
 }
 
 void BasicState::onKeyReleased(GameWindow* window, KeyCode key, KeyModifier modifiers)
 {
-	for(Element* element : this->elements)
-	{
-		element->onKeyReleased(window, this, key, modifiers);
-	}
+	this->keyReleasedNotifyAll(window, this, key, modifiers);
 }
 
 void BasicState::onMousePressed(GameWindow* window, ButtonCode button, unsigned int x, unsigned int y)
 {
-	for(Element* element : this->elements)
-	{
-		element->onMousePressed(window, this, button, x, y);
-	}
+	this->mousePressedNotifyAll(window, this, button, x, y);
 }
 
 void BasicState::onMouseReleased(GameWindow* window, ButtonCode button, unsigned int x, unsigned int y)
 {
-	for(Element* element : this->elements)
-	{
-		element->onMouseReleased(window, this, button, x, y);
-	}
+	this->mouseReleasedNotifyAll(window, this, button, x, y);
 }
 
 void BasicState::onMouseMoved(GameWindow* window, unsigned int x, unsigned int y, signed int motionX, signed int motionY)
 {
-	for(Element* element : this->elements)
-	{
-		element->onMouseMoved(window, this, x, y, motionX, motionY);
-	}
+	this->mouseMovedNotifyAll(window, this, x, y, motionX, motionY);
 }
 
