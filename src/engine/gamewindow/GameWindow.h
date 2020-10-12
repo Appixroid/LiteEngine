@@ -9,7 +9,7 @@
 #include "../state/GameState.h"
 #include "../element/Element.h"
 #include "../math/random/Random.h"
-#include "../events/listenable/ResizeListenable.h"
+#include "../events/listenable/resize/ResizeListenable.h"
 
 class GameWindow : public Window, public ResizeListenable
 {

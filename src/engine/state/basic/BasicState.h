@@ -4,8 +4,8 @@
 #include "../GameState.h"
 #include <vector>
 #include "../../graphics/Graphics.h"
-#include "../../events/listenable/KeyboardListenable.h"
-#include "../../events/listenable/MouseListenable.h"
+#include "../../events/listenable/keyboard/KeyboardListenable.h"
+#include "../../events/listenable/mouse/MouseListenable.h"
 
 class Element;
 
