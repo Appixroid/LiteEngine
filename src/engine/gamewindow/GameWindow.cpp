@@ -78,7 +78,7 @@ void GameWindow::catchEvent(const SDL_Event& event)
 	switch(event.type)
 	{            
         case SDL_VIDEORESIZE:
-        	this->currentState->onResize(this, event.resize.w, event.resize.h);
+        	this->resizeNotifyAll(this, event.resize.w, event.resize.h);
         	break;  
         
 		case SDL_KEYDOWN:

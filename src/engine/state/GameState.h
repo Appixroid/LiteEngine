@@ -27,8 +27,6 @@ class GameState
 		virtual void enter(GameWindow* window) = 0;
 		virtual void leave(GameWindow* window) = 0;
 		
-		virtual void onResize(GameWindow* window, Size newWidth, Size newHeight) = 0;
-		
 		virtual void onKeyPressed(GameWindow* window, KeyCode key, KeyModifier modifiers) = 0;
 		virtual void onKeyReleased(GameWindow* window, KeyCode key, KeyModifier modifiers) = 0;
 		
@@ -49,8 +47,6 @@ class EmptyState : public GameState
 		
 		void enter(GameWindow* window) override { UNUSED(window); };
 		void leave(GameWindow* window) override { UNUSED(window); };
-		
-		void onResize(GameWindow* window, Size newWidth, Size newHeight) override { UNUSED(window); UNUSED(newWidth); UNUSED(newHeight); }
 		
 		void onKeyPressed(GameWindow* window, KeyCode key, KeyModifier modifiers) override { UNUSED(window); UNUSED(key); UNUSED(modifiers); };
 		void onKeyReleased(GameWindow* window, KeyCode key, KeyModifier modifiers) override { UNUSED(window); UNUSED(key); UNUSED(modifiers); };
