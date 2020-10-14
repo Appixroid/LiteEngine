@@ -1,6 +1,7 @@
 #include "Window.h"
 #include <stdexcept>
 #include "../Color.h"
+#include "../surface/image/Image.h"
 
 #define MAX(left, right) (left > right ? left : right)
 #define MILLIS_PER_SECONDS 1000
@@ -52,7 +53,7 @@ void Window::setIcon(const std::string& icon)
 {
 	if(icon.size() > 0)
 	{
-		SDL_WM_SetIcon(SDL_LoadBMP(icon.c_str()), nullptr);
+		SDL_WM_SetIcon(Image(this->icon).toSDL(), nullptr);
 	}
 }
 	

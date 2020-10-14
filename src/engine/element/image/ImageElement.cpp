@@ -12,13 +12,6 @@ void ImageElement::loadImage(const std::string& image)
 	this->refresh();
 }
 
-void ImageElement::render(GameWindow* window, BasicState* state, Graphics* g)
-{
-	UNUSED(window);
-	UNUSED(state);
-	g->draw(this);
-}
-
 void ImageElement::init(GameWindow* window, BasicState* state)
 {
 	UNUSED(window);
@@ -27,6 +20,13 @@ void ImageElement::init(GameWindow* window, BasicState* state)
 	this->loadImage(this->path);
 }
 
-void ImageElement::destroy(GameWindow* window, BasicState* state) { UNUSED(window); UNUSED(state); }
+void ImageElement::render(GameWindow* window, BasicState* state, Graphics* g)
+{
+	UNUSED(window);
+	UNUSED(state);
 
+	g->draw(this);
+}
+
+void ImageElement::destroy(GameWindow* window, BasicState* state) { UNUSED(window); UNUSED(state); }
 void ImageElement::update(GameWindow* window, BasicState* state, unsigned int delta) { UNUSED(window); UNUSED(state); UNUSED(delta); }

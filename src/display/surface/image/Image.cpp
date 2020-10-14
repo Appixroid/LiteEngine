@@ -1,4 +1,5 @@
 #include "Image.h"
+#include <SDL/SDL_image.h>
 
 #define UNUSED(expr) (void)(expr)
 
@@ -11,7 +12,7 @@ Image::Image(const std::string& file) : Surface()
 
 void Image::loadImage(const std::string& file)
 {
-	SDL_Surface* image = SDL_LoadBMP(file.c_str());
+	SDL_Surface* image = IMG_Load(file.c_str());
 	
 	if(image != nullptr)
 	{ 
